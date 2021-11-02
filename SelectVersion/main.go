@@ -37,14 +37,9 @@ func SelectVersion() {
 		log.Fatal("Error pinging database: " + err.Error())
 	}
 
-	// Run query and scan for result
-	get_ver := func(sql string) (result string) {
-		err = db.QueryRowContext(ctx, sql).Scan(&result)
-		if err != nil {
-			log.Fatal("Scan failed:", err.Error())
-		}
-		return
-	}
-	fmt.Printf("\nMSSQL:\n%s\n", get_ver("SELECT @@version"))
-	fmt.Printf("\nPgSQL:\n%s\n", get_ver("SELECT version()"))
+	fmt.Printf("\nMSSQL version:\n%s\n", babelfishdb.Get(db, "SELECT @@version"))
+	fmt.Printf("\nPgSQL version:\n%s\n", babelfishdb.Get(db, "SELECT version()"))
+
+	fmt.Printf("\nMSSQL dbname:\n%s\n", babelfishdb.Get(db, "SELECT db_name()"))
+	fmt.Printf("\nPgSQL dbname:\n%s\n", babelfishdb.Get(db, "SELECT current_database()"))
 }

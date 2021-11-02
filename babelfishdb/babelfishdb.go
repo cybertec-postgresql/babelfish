@@ -1,6 +1,7 @@
 package babelfishdb
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
@@ -32,6 +33,14 @@ func Open(protocol string, conn string) (db *sql.DB, err error) {
 	db, err = sql.Open(protocol, conn)
 	if err != nil {
 		log.Fatal("Error creating connection pool: " + err.Error())
+	}
+	return
+}
+
+func Get(db *sql.DB, sql string) (result string) {
+	err := db.QueryRowContext(context.Background(), sql).Scan(&result)
+	if err != nil {
+		log.Fatal("Scan failed:", err.Error())
 	}
 	return
 }
