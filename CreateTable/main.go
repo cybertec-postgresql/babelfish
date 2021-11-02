@@ -63,6 +63,7 @@ func main() {
 
 // Gets and prints SQL Server version
 func SelectEmployee(id int) {
-	fmt.Printf("\nEmployee #%d:\n%s\n", id, babelfishdb.Get(db, fmt.Sprintf(`SELECT [Name] + ' from ' + [Location]
-	FROM TestSchema.Employees WHERE Id = %d`, id)))
+	fmt.Printf("\nEmployee #%d:\n%s\n", id, babelfishdb.Get(db, fmt.Sprintf(`
+SELECT [Name] + ' from ' + [Location]
+FROM TestSchema.Employees WHERE Id = %d`, id)))
 }
