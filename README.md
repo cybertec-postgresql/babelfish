@@ -5,12 +5,6 @@ This repo provides you with examples of applications speaking in MsSQL dialect t
 
 `App -> Babelfish -> PostgrSQL`
 
-## Folder Structure:
-- `babelfishdb`: helper package, provides `Open` and `Get` methods
-- `CreateTable`: shows how to use MsSQL spefific DDL construction through Babelfish against underlying PostgreSQL
-- `SelectVersion`: shows how to get server version and current database name
-
-
 ## Quick Start
 0. Make sure you have PostgreSQL and Babelfish installed and running.
 1. Clone the repository 
@@ -18,18 +12,22 @@ This repo provides you with examples of applications speaking in MsSQL dialect t
 $ gh repo clone cybertec-postgresql/babelfish
 $ cd babelfish
 ```
-2. Check credentials used by default in `babelfishdb/babelfishdb.go` or change connection string in the code of samples
+2. Check credentials used by default in `main.go` or change connection string in the code of samples
 
-3. Choose the sample and change directory
+3. Run the sample: 
 ```sh
-$ cd CreateTable
-```
+$  go run main.go
+2021/11/03 17:26:18 Connected!
 
-4. Run the sample: 
-```sh
-$ go run main.go
-2021/11/02 16:07:39 Connected!
+MSSQL version:
+Babelfish for PostgreSQL with SQL Server Compatibility - 12.0.2000.8
+Nov  2 2021 10:59:02
+Copyright (c) Amazon Web Services
+PostgreSQL 13.4 Babelfish for PostgreSQL on x86_64-pc-linux-gnu
+
+MSSQL dbname:
+master
 
 Employee #3:
-Tom from Germany
+Ants from Estonia
 ```
